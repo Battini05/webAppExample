@@ -1,5 +1,5 @@
-
-  FROM tomcat:8-jre8
-  EXPOSE 8085
-  #ADD /home/jenkins-slave01/workspace/build-and-deploy/target/webappExample.war webappExample.war
-  ENTRYPOINT ["java",".jar","webappExample.war"]
+FROM tomcat:latest
+#LABEL maintainer="Nidhi Gupta"
+ADD ./target/webappExample.war /usr/local/tomcat/webapps/
+EXPOSE 8085
+CMD ["catalina.sh", "run"]
