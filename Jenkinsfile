@@ -9,7 +9,7 @@ pipeline {
         }
   stage('Execute maven') {
            steps {
-                sh 'mvn package'             
+                sh script: 'mvn clean package'             
           }
         }
 stage('Docker Build and Tag') {
