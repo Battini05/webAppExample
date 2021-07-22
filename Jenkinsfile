@@ -17,6 +17,7 @@ pipeline {
 stage('Docker Build and Tag') {
            steps {
                 sh 'docker build -t battininaveen/build-and-deploy:latest' 
+                withDockerRegistry(credentialsId: '1a6fcbed-4458-45a1-bc1f-52482bcd41d8')
                 //sh 'docker tag build-and-deploy battininaveen/build-and-deploy:latest'
                 //sh 'docker tag build-and-deploy battininaveen/build-and-deploy:$BUILD_NUMBER'   
           }
@@ -41,7 +42,7 @@ stage('Docker Build and Tag') {
         }
  stage('Run Docker container on remote hosts') {
             steps {
-                sh "docker -H ssh://jenkins@3.142.194.47 run -d -p 8003:8080 battininaveen/build-and-deploy"
+                sh "docker -H ssh://jenkins@18.119.106.137 run -itd -p 8003:8080 battininaveen/build-and-deploy"
             }
         }
     }
