@@ -16,8 +16,7 @@ pipeline {
         }
 stage('Docker Build and Tag') {
            steps {
-                sh 'docker build -t battininaveen/build-and-deploy:latest' 
-                withDockerRegistry(credentialsId: '1a6fcbed-4458-45a1-bc1f-52482bcd41d8')
+                sh 'docker build -t battininaveen/build-and-deploy:latest'
                 //sh 'docker tag build-and-deploy battininaveen/build-and-deploy:latest'
                 //sh 'docker tag build-and-deploy battininaveen/build-and-deploy:$BUILD_NUMBER'   
           }
@@ -25,7 +24,7 @@ stage('Docker Build and Tag') {
      
   stage('Publish image to Docker Hub') {  
             steps {
-        withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+        withDockerRegistry([ credentialsId: '1a6fcbed-4458-45a1-bc1f-52482bcd41d8', url: "" ]) {
           sh  'docker push battininaveen/build-and-deploy:latest'
         //  sh  'docker push battininaveen/build-and-deploy:$BUILD_NUMBER' 
         }
