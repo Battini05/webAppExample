@@ -1,6 +1,8 @@
 pipeline {
     agent any
-   
+   environment {
+        PATH = "/opt/apache-maven-3.8.1/bin/:$PATH"
+    }
    stages {
       stage('checkout') {
            steps {
@@ -9,7 +11,7 @@ pipeline {
         }
   stage('Execute maven') {
            steps {
-                sh script: 'mvn clean package'             
+                sh 'mvn clean package'             
           }
         }
 stage('Docker Build and Tag') {
