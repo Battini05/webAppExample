@@ -35,7 +35,9 @@ stage('Docker Build and Tag') {
              
             steps 
    {
-                sh "docker run -d -p 8003:8080 battininaveen/build-and-deploy"
+       sh "docker stop -t 60  battininaveen/build-and-deploy"
+       
+       sh "docker run -d -p 8003:8080 battininaveen/build-and-deploy"
  
             }
         }
