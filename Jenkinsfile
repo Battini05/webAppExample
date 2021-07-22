@@ -41,7 +41,9 @@ stage('Docker Build and Tag') {
         }
  stage('Run Docker container on remote hosts') {
             steps {
-                sh "docker -H ssh://jenkins@18.119.106.137 run -itd -p 8003:8080 battininaveen/build-and-deploy"
+                //sh "docker -H ssh://jenkins@18.119.106.137 run -itd -p 8003:8080 battininaveen/build-and-deploy"
+                sh "docker images"
+                sh "docker ps -a"
             }
         }
     }
