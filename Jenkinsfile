@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'Job'}
+    agent {label 'Jobs'}
    environment {
         PATH = "/opt/apache-maven-3.8.1/bin/:$PATH"
     }
