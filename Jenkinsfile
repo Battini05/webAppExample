@@ -16,7 +16,7 @@ pipeline {
         }
 stage('Docker Build and Tag') {
            steps {
-                sh 'docker build -t build-and-deploy:latest .' 
+                sh 'docker build -t build-and-deploy:latest' 
                 sh 'docker tag build-and-deploy battininaveen/build-and-deploy:latest'
                 //sh 'docker tag build-and-deploy battininaveen/build-and-deploy:$BUILD_NUMBER'   
           }
